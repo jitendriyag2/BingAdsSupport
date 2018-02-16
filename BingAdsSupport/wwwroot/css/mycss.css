@@ -1,0 +1,180 @@
+body {
+    font-family: segoe ui;
+    font-size: 13px;
+    line-height: 1.2;
+    /*color: #333;*/
+    max-width:100%;
+    color: #399F9D;
+}
+
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.modal-content {
+    -webkit-box-shadow: 0 5px 20px rgba(0,0,0,.5);
+    box-shadow: 0 5px 20px rgba(0,0,0,.5);
+    border-radius: 15px;
+}
+
+.spacing-basic {
+    padding: 5px;
+    overflow-wrap: break-word; /*For wrapping single work into multiple line if width exceed*/
+}
+
+.modal-header {
+    min-height: 1px;
+    padding: 0px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-secondary.focus, .btn-secondary:focus {
+        box-shadow: 0 0 0 .2rem rgba(108,117,125,.5);
+    }
+
+.modal-dialog {
+    max-width: 520px;
+    /*margin: 3px auto;*/
+}
+
+.profile {
+    min-height: 355px;
+    display: inline-block;
+}
+
+modal-header {
+    min-height: 16px;
+    padding-top: 12px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.row {
+    /*margin-top: -5px;*/
+    margin-top: 10px;
+}
+
+.modal-body {
+    position: relative;
+    padding-top: 0px;
+    padding-right: 12px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+}
+
+.well {
+    min-height: 20px;
+    padding-top: 14px;
+    padding-right: 16px;
+    padding-bottom: 14px;
+    padding-left: 16px;
+    margin-bottom: 1px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.modal-title {
+    font-family: Segoe UI;
+    color: #399F9D;
+    text-shadow: 1px 1px #fff;
+    white-space: normal;
+    font-weight: bold;
+    margin-left: 150px;
+    line-height: 1.2;
+}
+
+legend {
+    font-size: 19px;
+}
+@media (min-width:768px)
+{
+/*.modal-dialog
+{
+width:550px;
+margin: -10px, auto
+}
+}
+.modal-dialog{
+margin: 0px, auto;
+}*/
+body{
+background-color: #f7f7f7;
+}
+
+.font{
+font-family: Segoe UI;
+color: #fff;
+text-shadow: 1px 1px #399F9D;
+white-space: normal;
+font-weight: bold;
+}
+
+.heading
+{
+font-family: Segoe UI;
+color: #399F9D;
+margin-left: 0px;
+text-shadow: 1px 1px #fff;
+white-space: normal;
+}
+
+label {
+    /*color: #7952b3;*/
+    color: #399F9D;
+    font-weight: normal;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #399F9D;
+    border-color: #399F9D;
+}
+
+
+
+
+.watermark {
+    min-height: 20px;
+    padding-top: 14px;
+    padding-right: 16px;
+    padding-bottom: 14px;
+    padding-left: 16px;
+    margin-bottom: 1px;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    /*
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+        border-radius: 10px;
+
+    */
+    box-shadow: 0 5px 20px rgba(0,0,0,.5);
+    border-radius: 15px;
+    /*
+        background-image: url("../images/BingAds1.png");
+        opacity: 0.2;
+
+    */
+    display: block;
+    position: absolute;
+}

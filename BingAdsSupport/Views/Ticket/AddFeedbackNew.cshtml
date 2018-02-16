@@ -1,0 +1,153 @@
+﻿@model BingAdsSupport.ViewModels.Ticket
+
+
+    <div class="row">
+        <div class="col col-md-1">
+        </div>
+        <div class="col col-md-5" style="border-right: thin solid #399F9D;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <br />
+                    <h5 class="modal-title heading" style="padding:5px 15px 0px 25px">Overall Support Experience</h5>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="well">
+                                    <form asp-action="AddFeedback" method="post">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input type="hidden" name="TicketID" value="@Model.TicketID" />
+                                        <div class="form-group">
+
+                                            <label asp-for="SupportExperience" class="control-label">
+                                                I am satisfied with my support experience on this issue:
+                                            </label>
+                                            <input style="display:none" name="SupportExperience" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" required title="" />
+                                            <span asp-validation-for="SupportExperience" class="text-danger"></span>
+                                        </div>
+                                        <div class="modal-body">
+                                            <fieldset>
+                                                <legend>
+                                                    <span class="heading">Technical Helpfulness and Service</span>
+                                                </legend>
+                                                <div class="form-group row">
+                                                    <div class="col col-sm-5">
+                                                        Useful Solution Provided
+                                                    </div>
+                                                    <div class="col col-sm-1" style="margin-left:-32px">:</div>
+                                                    <div class="col col-sm-7" style="margin-top: -10px; margin-left:-10px">
+                                                        <input type="hidden" id="Solution" name="Solution" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" required title="" />
+                                                        <span asp-validation-for="Solution" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+
+                                                    <div class="col col-sm-5">
+                                                        Timely Solution Provided
+                                                    </div>
+                                                    <div class="col col-sm-1" style="margin-left:-32px">:</div>
+                                                    <div class="col col-sm-7" style="margin-top: -10px; margin-left:-10px">
+                                                        <input type="hidden" name="ResponseTime" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" required title="" />
+                                                        <span asp-validation-for="ResponseTime" class="text-danger"></span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col col-sm-5">
+                                                        Responsive to my Questions
+                                                    </div>
+                                                    <div class="col col-sm-1" style="margin-left:-32px">:</div>
+                                                    <div class="col col-sm-7" style="margin-top: -10px; margin-left:-10px">
+                                                        <input type="hidden" name="Accuracy" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" required title="" />
+                                                        <span asp-validation-for="Accuracy" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="Feedback" class="control-label">
+                                                Additional feedback that you would like to share:
+                                            </label>
+                                            <textarea name="Feedback" class="form-control"></textarea>
+                                            <div asp-validation-for="Feedback" class="text-danger"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col col-xs-6">
+                                                    <button type="reset" class="btn btn-sm btn-warning btn-block">Reset</button>
+                                                </div>
+                                                <div class="col col-xs-6">
+                                                    <button type="submit" class="btn btn-success btn-sm btn-block">Submit Your Feedback</button>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-md-3" style="padding-left:30px;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <br />
+                    <h5 class="modal-title heading" style="padding:5px 15px 0px 25px">UCM Ticket Details</h5>
+                    <br />
+                    <div class="modal-body">
+                        <div class="well">
+                            <div class="row" style="padding-left: 25px;">
+                                <div class="col col-lg-4 spacing-basic">UCM No</div>
+                                <div class="col col-lg-1 spacing-basic">:</div>
+                                <div class="col col-lg-7 spacing-basic"><a href="https://ucm.bingads.microsoft.com/Ticketing#/EditTicket/@Model.TicketID/IssueDetails">@Model.TicketID </a> </div>
+                                <div class="col col-lg-4 spacing-basic">Subject</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">
+                                    <a href="https://ucm.bingads.microsoft.com/Ticketing#/EditTicket/@Model.TicketID/IssueDetails">
+                                        @Model.TicketInfo.TicketSubject
+                                    </a>
+                                </div>
+                                @*
+                                    <div class="col col-lg-4 spacing-basic">Created By</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.RequesterEmail</div>
+                                *@
+                                <div class="col col-lg-4 spacing-basic">Resolved By</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.OwnerInfo.FirstName @Model.TicketInfo.OwnerInfo.LastName </div>
+                                <div class="col col-lg-4 spacing-basic">Created On</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.TicketCreatedDateTime</div>
+                                <div class="col col-lg-4 spacing-basic">Resolved On</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.TicketModifiedDateTime</div>
+                                <div class="col col-lg-4 spacing-basic">Time Taken to Resolve</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">@{ var resolveTime = Model.TicketInfo.TicketModifiedDateTime.Subtract(Model.TicketInfo.TicketCreatedDateTime); } @resolveTime.Hours Hr : @resolveTime.Minutes Min : @resolveTime.Seconds Sec </div>
+                                <div class="col col-lg-4 spacing-basic">Priority</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.TicketPriority</div>
+                                <div class="col col-lg-4 spacing-basic">Root Cause</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.RootCauseLevel1 @Model.TicketInfo.RootCauseLevel2  @Model.TicketInfo.RootCauseLevel3 </div>
+                                <div class="col col-lg-4 spacing-basic"> Resolved Remark</div>
+                                <div class="col col-sm-1 spacing-basic">:</div>
+                                <div class="col col-sm-7 spacing-basic">
+                                    @{ var reason = (Model.TicketInfo.ResolveReason is null) ? Model.TicketInfo.CloseReason : Model.TicketInfo.ResolveReason; }
+                                    @reason
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
