@@ -51,11 +51,14 @@ namespace BingAdsSupport.Controllers
         {
             string Error = "";
 
+            TryValidateModel(ticket);
+
             Ticket OldTicket = new Ticket()
             {
                 TicketID = ticket.TicketID,
                 TicketInfo = _dbContext.GetTicketInfo(ticket.TicketID)
             };
+            
 
             if (ModelState.IsValid)
             {
@@ -160,5 +163,19 @@ namespace BingAdsSupport.Controllers
     }
     */
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Create(Ticket ticket)
+        {
+            if(!ModelState.IsValid)
+            {
+
+            }
+
+            return NoContent();
+        }
     }
 }
