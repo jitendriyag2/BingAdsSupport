@@ -13,13 +13,13 @@ namespace BingAdsSupport.ViewModels
         //[Required, StringLength(16, MinimumLength = 16, ErrorMessage = "Invalid Ticket ID")]
         //[Remote(action: "ValidateTicketNo", controller: "Validation", AdditionalFields = nameof(TicketID))]
         public string TicketID { get; set; }
-        [Range(1, 5, ErrorMessage = "Please provide a valuable rating")]
+        [Required(ErrorMessage = "Please provide a valuable rating"), Range(1, 5, ErrorMessage = "Please provide rating between 1 to 5")]
         public int SupportExperience { get; set; }
-        [Range(1, 5, ErrorMessage = "Please provide a valuable rating")]
+        [Required(ErrorMessage = "Please provide a valuable rating"), Range(1, 5, ErrorMessage = "Please provide rating between 1 to 5")]
         public int Solution { get; set; }
-        [Range(1, 5, ErrorMessage = "Please provide a valuable rating")]
+        [Required(ErrorMessage = "Please provide a valuable rating"), Range(1, 5, ErrorMessage = "Please provide rating between 1 to 5")]
         public int ResponseTime { get; set; }
-        [Range(1, 5, ErrorMessage = "Please provide a valuable rating")]
+        [Required(ErrorMessage = "Please provide a valuable rating"), Range(1, 5, ErrorMessage = "Please provide rating between 1 to 5")]
         public int Accuracy { get; set; }
         [Required,StringLength(500, ErrorMessage = "Please enter your Valuable Feedback")]
         public string Feedback { get; set; }
