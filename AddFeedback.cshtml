@@ -1,0 +1,238 @@
+﻿@model BingAdsSupport.ViewModels.Ticket
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddFeedback</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link href="../css/star-rating.css" rel="stylesheet" />
+    <script src="../js/star-rating.js"></script>
+    <link href="../css/mycss.css" rel="stylesheet">
+    <script>
+        function validate() {
+            var fields = document.getElementsByClassName("rating");
+            var spans = document.getElementsByClassName("text-danger");
+            var no = 0;
+
+            for (i = 0; i < fields.length; i++) {
+                if (fields[i].value == 0) {
+                    no++;
+                    spans[i].innerHTML = "Please provide rating between 1 to 5 ";
+                }
+                else {
+
+                    spans[i].innerHTML = "";
+                }
+            }
+
+            var feedback = document.getElementById("Feedback");
+            if (feedback.value.length == 0) {
+                no++;
+                document.getElementsByTagName("span")[57].innerHTML = "Please provide your valuable suggestion";
+            } else if (feedback.value.length <= 5) {
+                no++;
+                document.getElementsByTagName("span")[57].innerHTML = "Please provide suggestion minimum of 5 characters";
+            }
+            else {
+                
+                document.getElementsByTagName("span")[57].innerHTML = "";
+            }
+            if (no > 0) { return false; }
+            else { return true;}
+            return false;
+        }
+            
+</script>
+</head>
+<body width="100%">
+    @*@Html.AntiForgeryToken()*@
+    @*<center><img src="../images/microsoft-gray.png" /></center>*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <img src="../images/BingAds1.png" height="50px" width="200px" style="padding-left: 20px;" />
+            </div>
+            <div class="col-md-6" style="text-align:right;">
+                @*<img src="../images/microsoft-gray.png" />*@
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col col-md-1">
+        </div>
+        <div class="col col-md-5" style="border-right: thin solid #399F9D;">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <br />
+                    <h5 class="modal-title heading" style="padding:5px 15px 0px 25px">Overall Support Experience</h5>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="well">
+                                    <form id="feedbackform" method="post" action="" onmouseover="validate();">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input asp-for="TicketID" type="hidden" name="TicketID" value="@Model.TicketID" />
+                                        <div class="form-group">
+
+                                            <label asp-for="SupportExperience" class="control-label">
+                                                I am satisfied with my support experience on this issue:
+                                            </label>
+                                            <input asp-for="SupportExperience" type="hidden" name="SupportExperience"  class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" value="@Model.SupportExperience" />
+                                            <span asp-validation-for="SupportExperience" class="text-danger"></span>
+                                        </div>
+                                        <div class="modal-body">
+                                            <fieldset>
+                                                <legend>
+                                                    <span class="heading">Technical Helpfulness and Service</span>
+                                                </legend>
+                                                <div class="form-group row">
+                                                    <div class="col col-sm-5">
+                                                        Useful Solution Provided
+                                                    </div>
+                                                    <div class="col col-sm-1" style="margin-left:-32px">:</div>
+                                                    <div class="col col-sm-7" style="margin-top: -10px; margin-left:-10px">
+                                                        <input asp-for="Solution" type="hidden" name="Solution"  onblur="validate();" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" value="0" />
+                                                        <span asp-validation-for="Solution" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+
+                                                    <div class="col col-sm-5">
+                                                        Timely Solution Provided
+                                                    </div>
+                                                    <div class="col col-sm-1" style="margin-left:-32px">:</div>
+                                                    <div class="col col-sm-7" style="margin-top: -10px; margin-left:-10px">
+                                                        <input asp-for="ResponseTime" type="hidden" name="ResponseTime"  onblur="validate();" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" value="0"/>
+                                                        <span asp-validation-for="ResponseTime" class="text-danger"></span>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col col-sm-5">
+                                                        Responsive to my Questions
+                                                    </div>
+                                                    <div class="col col-sm-1" style="margin-left:-32px">:</div>
+                                                    <div class="col col-sm-7" style="margin-top: -10px; margin-left:-10px">
+                                                        <input asp-for="Accuracy" type="hidden" name="Accuracy"  onblur="validate();" class="rating form-control" data-min=0 data-max=5 data-step=1 data-size="xs" value="0"/>
+                                                        <span asp-validation-for="Accuracy" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="Feedback" class="control-label">
+                                                Additional feedback that you would like to share:
+                                            </label>
+                                            <textarea asp-for="Feedback" name="Feedback" class="form-control" onkeypress="validate();" onblur="validate();"></textarea>
+                                            <span asp-validation-for="Feedback" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col col-xs-6">
+                                                    <button type="reset" class="btn btn-sm btn-warning btn-block">Reset</button>
+                                                </div>
+                                                <div class="col col-xs-6">
+                                                    <input type="submit" id="btnSubmit" class="btn btn-success btn-sm btn-block" onclick="return validate();" value="Submit Your Feedback">
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-md-3" style="padding-left:30px;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <br />
+                    <h5 class="modal-title heading" style="padding:5px 15px 0px 25px">UCM Ticket Details</h5>
+                    <br />
+                    <div class="modal-body">
+
+                        @if (Model.TicketInfo != null)
+                        {
+
+
+                            <div class="well">
+                                <div class="row" style="padding-left: 25px;">
+                                    <div class="col col-lg-4 spacing-basic">UCM No</div>
+                                    <div class="col col-lg-1 spacing-basic">:</div>
+                                    <div class="col col-lg-7 spacing-basic"><a href="https://ucm.bingads.microsoft.com/Ticketing#/EditTicket/@Model.TicketID/IssueDetails">@Model.TicketID </a> </div>
+                                    <div class="col col-lg-4 spacing-basic">Subject</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">
+                                        <a href="https://ucm.bingads.microsoft.com/Ticketing#/EditTicket/@Model.TicketID/IssueDetails">
+                                            @Model.TicketInfo.TicketSubject
+                                        </a>
+                                    </div>
+                                    @*
+                                        <div class="col col-lg-4 spacing-basic">Created By</div>
+                                        <div class="col col-sm-1 spacing-basic">:</div>
+                                        <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.RequesterEmail</div>
+                                    *@
+
+
+                                    <div class="col col-lg-4 spacing-basic">Resolved By</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.OwnerInfo.FirstName @Model.TicketInfo.OwnerInfo.LastName </div>
+                                    <div class="col col-lg-4 spacing-basic">Created On</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.TicketCreatedDateTime</div>
+                                    <div class="col col-lg-4 spacing-basic">Resolved On</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.TicketModifiedDateTime</div>
+                                    <div class="col col-lg-4 spacing-basic">Time Taken to Resolve</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@{ var resolveTime = Model.TicketInfo.TicketModifiedDateTime.Subtract(Model.TicketInfo.TicketCreatedDateTime); } @resolveTime.Hours Hr : @resolveTime.Minutes Min : @resolveTime.Seconds Sec </div>
+                                    <div class="col col-lg-4 spacing-basic">Priority</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.TicketPriority</div>
+                                    <div class="col col-lg-4 spacing-basic">Root Cause</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">@Model.TicketInfo.RootCauseLevel1 @Model.TicketInfo.RootCauseLevel2  @Model.TicketInfo.RootCauseLevel3 </div>
+                                    <div class="col col-lg-4 spacing-basic"> Resolved Remark</div>
+                                    <div class="col col-sm-1 spacing-basic">:</div>
+                                    <div class="col col-sm-7 spacing-basic">
+                                        @{ var reason = (Model.TicketInfo.ResolveReason is null) ? Model.TicketInfo.CloseReason : Model.TicketInfo.ResolveReason; }
+                                        @reason
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @*@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}*@
+
+
+    @*<script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+    </body>
+</html>
